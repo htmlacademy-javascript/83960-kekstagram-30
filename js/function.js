@@ -1,14 +1,11 @@
-const checkPhrase = 'А роза упала на лапу Азора';
-// const checkPhrase = 2157512;
+const checkPhrase = 'Лёша на полке клопа нашёл';
 
 function prepareToCheck(str) {
-  let result = (str.toLowerCase()).replaceAll(' ', '');
-  // result = result.replaceAll(' ', '');
+  const result = (str.toLowerCase()).replaceAll(' ', '');
   return result;
 }
 
-function checkPalindrome(phrase) {
-  // const len = (phrase.length - 1) / 2;
+function isPalindrome(phrase) {
   const preparedPhrase = prepareToCheck(String(phrase));
   const len = preparedPhrase.length - 1;
   let i = 0;
@@ -20,5 +17,30 @@ function checkPalindrome(phrase) {
   return result;
 }
 
-let check = checkPalindrome(checkPhrase);
-alert(check);
+function checkLength(str, maxLength) {
+  return str.length <= maxLength;
+}
+
+function numberFromString(str) {
+  const arrayDigits = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+  const temp = String(str);
+  let result = '';
+  for (const char of temp) {
+    if (arrayDigits.indexOf(char) !== -1) {
+      result = result + char;
+    }
+  }
+  if (Number(result)) {
+    return Number(result);
+  } else {
+    return NaN;
+  }
+}
+
+
+const check = isPalindrome(checkPhrase);
+console.log(check);
+
+console.log(checkLength('dgdsfhgrthsdfhgdfgdsfgsdgsertser', 20));
+
+console.log(numberFromString('dfgg gdfg gdfgr hdfhrt'));
