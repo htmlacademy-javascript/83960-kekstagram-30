@@ -1,7 +1,7 @@
 const checkPhrase = 'Лёша на полке клопа нашёл';
 
 function prepareToCheck(str) {
-  const result = (str.toLowerCase()).replaceAll(' ', '');
+  const result = str.toLowerCase().replaceAll(' ', '');
   return result;
 }
 
@@ -26,21 +26,17 @@ function numberFromString(str) {
   const temp = String(str);
   let result = '';
   for (const char of temp) {
-    if (arrayDigits.indexOf(char) !== -1) {
+    if (arrayDigits.includes(char)) {
       result = result + char;
     }
   }
-  if (Number(result)) {
-    return Number(result);
-  } else {
-    return NaN;
-  }
+  return (Number(result)) ? Number(result) : NaN;
 }
 
-
-const check = isPalindrome(checkPhrase);
-console.log(check);
+//TODO: Убрать выводы в консоль и добавить вызовы функций
+const checkPalindrome = isPalindrome(checkPhrase);
+console.log(checkPalindrome);
 
 console.log(checkLength('dgdsfhgrthsdfhgdfgdsfgsdgsertser', 20));
 
-console.log(numberFromString('dfgg gdfg gdfgr hdfhrt'));
+console.log(numberFromString('dfgg gdfg gdfgr hdfhr23t'));
