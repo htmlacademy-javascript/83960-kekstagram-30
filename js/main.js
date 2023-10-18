@@ -27,13 +27,6 @@ const getRandomInteger = (a, b) => {
 
 const getRandomElement = (anyArray) => anyArray[getRandomInteger(0, anyArray.length - 1)];
 
-const generateConsecutiveID = () => {
-  let customID = 0;
-  return function () {
-    return ++customID;
-  };
-};
-
 const generateUniqueID = (min = 1, max = 65535) => {
   const uniqueID = [];
   return function () {
@@ -46,14 +39,11 @@ const generateUniqueID = (min = 1, max = 65535) => {
   };
 };
 
-const generatePhotoUrl = () => `photos/${String(generateConsecutiveID()())}.jpg`;
-
-const generateAvatarUrl = () => `img/avatar-${String(getRandomInteger(1, 6))}.svg`;
-
+const getCommentID = generateUniqueID();
 
 const createComment = () => ({
-  id: generateUniqueID()(),
-  avatar: generateAvatarUrl(),
+  id: getCommentID(),
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   message: getRandomElement(COMMENT_MESSAGES),
   name: getRandomElement(NAMES)
 });
@@ -61,13 +51,15 @@ const createComment = () => ({
 const generateComments = () => {
   const countComments = getRandomInteger(0, 30);
   return Array.from({ length: countComments }, createComment);
-}
+};
+
+const getPhotoID = generateUniqueID(1, 25);
 
 const createPhotoDescription = () => {
-  const photoID = generateConsecutiveID();
+  const photoID = getPhotoID();
   return {
-    id: photoID(),
-    url: generatePhotoUrl(),
+    id: photoID,
+    url: `photos/${photoID}.jpg`,
     description: 'gdfghfhtyjrtyryreyuetyu',
     likes: getRandomInteger(15, 200),
     comments: generateComments()
@@ -77,4 +69,4 @@ const createPhotoDescription = () => {
 const userPhotos = Array.from({ length: 25 }, createPhotoDescription);
 
 //TODO: Убрать вывод в консоль
-console.log(userPhotos);
+console.table(userPhotos);
