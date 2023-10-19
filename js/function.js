@@ -33,10 +33,24 @@ function numberFromString(str) {
   return (Number(result)) ? Number(result) : NaN;
 }
 
+const convertTimeToMinutesFromMidnight = function (anyTime) {
+  const time = anyTime.split(':');
+  return parseInt(time[0], 10) * 60 + parseInt(time[1], 10);
+};
+
+const isMeetingValid = function (startWorkDay, endWorkDay, startMeeting, durationMeeting) {
+  const startWorkDayInMinutes = convertTimeToMinutesFromMidnight(startWorkDay);
+  const endWorkDayInMinutes = convertTimeToMinutesFromMidnight(endWorkDay);
+  const startMeetingInMinutes = convertTimeToMinutesFromMidnight(startMeeting);
+  return (startWorkDayInMinutes <= startMeetingInMinutes) && ((startMeetingInMinutes + durationMeeting) <= endWorkDayInMinutes);
+};
+
+isPalindrome(checkPhrase);
+
+checkLength('dgdsfhgrthsdfhgdfgdsfgsdgsertser', 20);
+
+numberFromString('dfgg gdfg gdfgr hdfhr23t');
+
 //TODO: Убрать выводы в консоль и добавить вызовы функций
-const checkPalindrome = isPalindrome(checkPhrase);
-console.log(checkPalindrome);
 
-console.log(checkLength('dgdsfhgrthsdfhgdfgdsfgsdgsertser', 20));
-
-console.log(numberFromString('dfgg gdfg gdfgr hdfhr23t'));
+console.log(isMeetingValid('08:00', '14:30', '14:00', 90));
