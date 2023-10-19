@@ -53,4 +53,4 @@ numberFromString('dfgg gdfg gdfgr hdfhr23t');
 
 //TODO: Убрать выводы в консоль и добавить вызовы функций
 
-console.log(isMeetingValid('08:00', '14:30', '14:00', 90));
+console.log(isMeetingValid('08:00', '14:30', '14:00', 30));
