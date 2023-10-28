@@ -50,3 +50,26 @@ checkLength('dgdsfhgrthsdfhgdfgdsfgsdgsertser', 20);
 numberFromString('dfgg gdfg gdfgr hdfhr23t');
 
 isMeetingValid('08:00', '14:30', '14:00', 30);
+
+const getRandomInteger = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
+
+const getRandomElement = (anyArray) => anyArray[getRandomInteger(0, anyArray.length - 1)];
+
+const generateUniqueID = (min = 1, max = 65535) => {
+  const uniqueID = [];
+  return function () {
+    let getID = getRandomInteger(min, max);
+    while (uniqueID.includes(getID) && uniqueID.length < max) {
+      getID = getRandomInteger(min, max);
+    }
+    uniqueID.push(getID);
+    return getID;
+  };
+};
+
+export { getRandomInteger, getRandomElement, generateUniqueID };
