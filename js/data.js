@@ -6,7 +6,20 @@ const NAMES = [
   'Виктор',
   'Юлия',
   'Люпита',
-  'Вашингтон',
+  'Вашингтон'
+];
+
+const PHOTO_DESCRIPTIONS = [
+  'Прекрасный закат над океаном',
+  'Весенние цветы в саду',
+  'Атмосфера романтики и любви',
+  'Дикий лес в тумане',
+  'Удивительная архитектура старого города',
+  'Золотая осень на полях',
+  'Загадочный взгляд морской звезды',
+  'Радуга после дождя',
+  'Летний пикник на природе',
+  'Воображаемые космические пейзажи'
 ];
 
 const COMMENT_MESSAGES = [
@@ -31,7 +44,7 @@ const generateUniqueID = (min = 1, max = 65535) => {
   const uniqueID = [];
   return function () {
     let getID = getRandomInteger(min, max);
-    while (uniqueID.includes(getID)) {
+    while (uniqueID.includes(getID) && uniqueID.length < max) {
       getID = getRandomInteger(min, max);
     }
     uniqueID.push(getID);
@@ -60,7 +73,7 @@ const createPhotoDescription = () => {
   return {
     id: photoID,
     url: `photos/${photoID}.jpg`,
-    description: 'gdfghfhtyjrtyryreyuetyu',
+    description: getRandomElement(PHOTO_DESCRIPTIONS),
     likes: getRandomInteger(15, 200),
     comments: generateComments()
   };

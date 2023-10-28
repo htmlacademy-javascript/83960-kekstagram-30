@@ -1,5 +1,3 @@
-const checkPhrase = 'Лёша на полке клопа нашёл';
-
 function prepareToCheck(str) {
   const result = str.toLowerCase().replaceAll(' ', '');
   return result;
@@ -45,12 +43,10 @@ const isMeetingValid = function (startWorkDay, endWorkDay, startMeeting, duratio
   return (startWorkDayInMinutes <= startMeetingInMinutes) && ((startMeetingInMinutes + durationMeeting) <= endWorkDayInMinutes);
 };
 
-isPalindrome(checkPhrase);
+isPalindrome('Лёша на полке клопа нашёл');
 
 checkLength('dgdsfhgrthsdfhgdfgdsfgsdgsertser', 20);
 
 numberFromString('dfgg gdfg gdfgr hdfhr23t');
 
-//TODO: Убрать выводы в консоль и добавить вызовы функций
-
-console.log(isMeetingValid('08:00', '14:30', '14:00', 30));
+isMeetingValid('08:00', '14:30', '14:00', 30);
