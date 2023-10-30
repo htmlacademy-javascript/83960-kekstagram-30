@@ -34,4 +34,6 @@ const createPhotoDescription = () => {
 const userPhotos = Array.from({ length: 25 }, createPhotoDescription);
 
 //TODO: Убрать вывод в консоль
-console.table(userPhotos);
+//console.table(userPhotos);
+
+export { userPhotos };
