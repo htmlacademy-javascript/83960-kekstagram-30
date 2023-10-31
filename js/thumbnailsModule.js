@@ -10,4 +10,12 @@ const createNewThumbnail = function (userPhoto) {
   return newThumbnail;
 };
 
-export { createNewThumbnail };
+const drawGallery = function (galleryContainer, pictures) {
+  const documentFragment = document.createDocumentFragment();
+  pictures.forEach((picture) => {
+    documentFragment.appendChild(createNewThumbnail(picture));
+  });
+  galleryContainer.appendChild(documentFragment);
+};
+
+export { drawGallery };
