@@ -1,72 +1,38 @@
-const NAMES = [
-  'Иван',
-  'Хуан Себастьян',
-  'Мария',
-  'Кристоф',
-  'Виктор',
-  'Юлия',
-  'Люпита',
-  'Вашингтон',
-];
+import { AUTHORS_NAMES, PHOTO_DESCRIPTIONS, COMMENT_MESSAGES } from './constants.js';
+import { MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER } from './constants.js';
+import { MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT, USER_PHOTO_COUNT, MIN_LIKES_COUNT, MAX_LIKES_COUNT } from './constants.js';
+import { getRandomInteger, getRandomElement, generateUniqueID } from './function.js';
 
-const COMMENT_MESSAGES = [
-  'Всё отлично!',
-  'В целом всё неплохо.Но не всё.',
-  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра.В конце концов это просто непрофессионально.',
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-  'Лица у людей на фотке перекошены, как будто их избивают.Как можно было поймать такой неудачный момент ?!'
-];
-
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
-
-const getRandomElement = (anyArray) => anyArray[getRandomInteger(0, anyArray.length - 1)];
-
-const generateUniqueID = (min = 1, max = 65535) => {
-  const uniqueID = [];
-  return function () {
-    let getID = getRandomInteger(min, max);
-    while (uniqueID.includes(getID)) {
-      getID = getRandomInteger(min, max);
-    }
-    uniqueID.push(getID);
-    return getID;
+const createComment = () => {
+  const getCommentID = generateUniqueID();
+  return {
+    id: getCommentID(),
+    avatar: `img/avatar-${getRandomInteger(MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER)}.svg`,
+    message: getRandomElement(COMMENT_MESSAGES),
+    name: getRandomElement(AUTHORS_NAMES)
   };
 };
 
-const getCommentID = generateUniqueID();
-
-const createComment = () => ({
-  id: getCommentID(),
-  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-  message: getRandomElement(COMMENT_MESSAGES),
-  name: getRandomElement(NAMES)
-});
-
 const generateComments = () => {
-  const countComments = getRandomInteger(0, 30);
+  const countComments = getRandomInteger(MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT);
   return Array.from({ length: countComments }, createComment);
 };
 
-const getPhotoID = generateUniqueID(1, 25);
+const getPhotoID = generateUniqueID(1, USER_PHOTO_COUNT);
 
 const createPhotoDescription = () => {
   const photoID = getPhotoID();
   return {
     id: photoID,
     url: `photos/${photoID}.jpg`,
-    description: 'gdfghfhtyjrtyryreyuetyu',
-    likes: getRandomInteger(15, 200),
+    description: getRandomElement(PHOTO_DESCRIPTIONS),
+    likes: getRandomInteger(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
     comments: generateComments()
   };
 };
 
-const userPhotos = Array.from({ length: 25 }, createPhotoDescription);
+const getUserPhotos = function () {
+  return Array.from({ length: USER_PHOTO_COUNT }, createPhotoDescription);
+};
 
-//TODO: Убрать вывод в консоль
-console.table(userPhotos);
+export { getUserPhotos };

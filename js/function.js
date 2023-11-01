@@ -1,5 +1,3 @@
-const checkPhrase = 'Лёша на полке клопа нашёл';
-
 function prepareToCheck(str) {
   const result = str.toLowerCase().replaceAll(' ', '');
   return result;
@@ -45,12 +43,26 @@ const isMeetingValid = function (startWorkDay, endWorkDay, startMeeting, duratio
   return (startWorkDayInMinutes <= startMeetingInMinutes) && ((startMeetingInMinutes + durationMeeting) <= endWorkDayInMinutes);
 };
 
-isPalindrome(checkPhrase);
+const getRandomInteger = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
 
-checkLength('dgdsfhgrthsdfhgdfgdsfgsdgsertser', 20);
+const getRandomElement = (anyArray) => anyArray[getRandomInteger(0, anyArray.length - 1)];
 
-numberFromString('dfgg gdfg gdfgr hdfhr23t');
+const generateUniqueID = (min = 1, max = 65535) => {
+  const uniqueID = [];
+  return function () {
+    let getID = getRandomInteger(min, max);
+    while (uniqueID.includes(getID) && uniqueID.length < max) {
+      getID = getRandomInteger(min, max);
+    }
+    uniqueID.push(getID);
+    return getID;
+  };
+};
 
-//TODO: Убрать выводы в консоль и добавить вызовы функций
-
-console.log(isMeetingValid('08:00', '14:30', '14:00', 30));
+export { getRandomInteger, getRandomElement, generateUniqueID };
+export { isPalindrome, checkLength, numberFromString, isMeetingValid };
