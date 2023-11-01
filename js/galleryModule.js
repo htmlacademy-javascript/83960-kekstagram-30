@@ -1,18 +1,20 @@
 import { drawGallery } from './thumbnailsModule';
-import { userPhotos } from './data';
+import { getUserPhotos } from './data';
+import { showBigPicture } from './bigPictureModule';
 
 const thumbnailsContainer = document.querySelector('.pictures');
-
-drawGallery(thumbnailsContainer, userPhotos);
+const userPhotos = getUserPhotos();
 
 const thumbnailsContainerClick = function (evt) {
-  evt.preventDefault();
   if (evt.target.className === 'picture__img') {
-    const filter = evt.target.src.split('/').at(-1);
-    const current = userPhotos.find((item) => (item.url.includes(filter)));
-    console.log(current);
+    evt.preventDefault();
+    const pictureFileName = evt.target.src.split('/').at(-1);
+    const clickedPicture = userPhotos.find((picture) => (picture.url.includes(`/${pictureFileName}`)));
+    showBigPicture(clickedPicture);
+    //console.log(clickedPicture);
   }
 };
 
-
 thumbnailsContainer.addEventListener('click', thumbnailsContainerClick);
+
+drawGallery(thumbnailsContainer, userPhotos);

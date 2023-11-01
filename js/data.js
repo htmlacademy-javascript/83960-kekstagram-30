@@ -31,9 +31,11 @@ const createPhotoDescription = () => {
   };
 };
 
-const userPhotos = Array.from({ length: 25 }, createPhotoDescription);
+const getUserPhotos = function () {
+  return Array.from({ length: USER_PHOTO_COUNT }, createPhotoDescription);
+};
 
 //TODO: Убрать вывод в консоль
 //console.table(userPhotos);
 
-export { userPhotos };
+export { getUserPhotos };
