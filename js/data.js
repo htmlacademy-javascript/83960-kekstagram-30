@@ -1,4 +1,4 @@
-import { NAMES, PHOTO_DESCRIPTIONS, COMMENT_MESSAGES } from './constants.js';
+import { AUTHORS_NAMES, PHOTO_DESCRIPTIONS, COMMENT_MESSAGES } from './constants.js';
 import { MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER } from './constants.js';
 import { MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT, USER_PHOTO_COUNT, MIN_LIKES_COUNT, MAX_LIKES_COUNT } from './constants.js';
 import { getRandomInteger, getRandomElement, generateUniqueID } from './function.js';
@@ -9,7 +9,7 @@ const createComment = () => {
     id: getCommentID(),
     avatar: `img/avatar-${getRandomInteger(MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER)}.svg`,
     message: getRandomElement(COMMENT_MESSAGES),
-    name: getRandomElement(NAMES)
+    name: getRandomElement(AUTHORS_NAMES)
   };
 };
 
@@ -34,8 +34,5 @@ const createPhotoDescription = () => {
 const getUserPhotos = function () {
   return Array.from({ length: USER_PHOTO_COUNT }, createPhotoDescription);
 };
-
-//TODO: Убрать вывод в консоль
-//console.table(userPhotos);
 
 export { getUserPhotos };
