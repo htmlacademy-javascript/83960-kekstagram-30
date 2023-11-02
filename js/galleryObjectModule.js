@@ -18,13 +18,13 @@ const thumbnailsGallery = {
   },
   _thumbnailsSource: [],
   set thumbnailTemplate(idTemplate) {
-    this._thumbnailTemplate = document.querySelector(idTemplate).content;
+    this._thumbnailTemplate = document.querySelector(`#${idTemplate}`).content;
   },
   get thumbnailTemplate() {
     return this._thumbnailTemplate;
   },
   set thumbnailsContainer(className) {
-    this._thumbnailsContainer = document.querySelector(className);
+    this._thumbnailsContainer = document.querySelector(`.${className}`);
   },
   get thumbnailsContainer() {
     return this._thumbnailsContainer;
