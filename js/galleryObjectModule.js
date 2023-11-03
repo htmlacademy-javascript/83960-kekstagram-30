@@ -1,6 +1,4 @@
-const CLASS_PICTURE_IMAGE = 'picture__img';
-const CLASS_PICTURE_LIKES = 'picture__likes';
-const CLASS_PICTURE_COMMENTS = 'picture__comments';
+import { CLASS_PICTURE_IMAGE, CLASS_PICTURE_LIKES, CLASS_PICTURE_COMMENTS } from './constants';
 
 const thumbnailsGallery = {
   init(source, idTemplate, className) {

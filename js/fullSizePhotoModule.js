@@ -1,4 +1,4 @@
-const CLASS_CLOSE_BUTTON = 'big-picture__cancel';
+import { CLASS_CLOSE_BUTTON, CLASS_BIG_PICTURE_IMAGE, CLASS_BIG_PICTURE_LIKES, CLASS_BIG_PICTURE_DESCRIPTION } from './constants';
 
 const fullSizePhoto = {
   init(containerClass) {
@@ -34,9 +34,20 @@ const fullSizePhoto = {
   get hidden() {
     return this._hidden;
   },
+  setPictureUrl(value) {
+    this.container.querySelector(`.${CLASS_BIG_PICTURE_IMAGE}`).children[0].src = value;
+  },
+  setLikesCount(value) {
+    this.container.querySelector(`.${CLASS_BIG_PICTURE_LIKES}`).textContent = value;
+  },
+  setDescription(value) {
+    this.container.querySelector(`.${CLASS_BIG_PICTURE_DESCRIPTION}`).textContent = value;
+  },
   show(picture) {
     this.source = picture;
-    this.container.querySelector('.big-picture__img').children[0].src = picture.url;
+    this.setPictureUrl(picture.url);
+    this.setLikesCount(picture.likes);
+    this.setDescription(picture.description);
     document.body.classList.add('modal-open');
     this.hidden = false;
     this.closeButton.addEventListener('click', this.closeButtonClick);
