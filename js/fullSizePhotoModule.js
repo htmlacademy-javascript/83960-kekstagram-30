@@ -1,3 +1,4 @@
+import { commentsList } from './commentsObjectModule';
 import { CLASS_CLOSE_BUTTON, CLASS_BIG_PICTURE_IMAGE, CLASS_BIG_PICTURE_LIKES, CLASS_BIG_PICTURE_DESCRIPTION } from './constants';
 
 const fullSizePhoto = {
@@ -34,6 +35,7 @@ const fullSizePhoto = {
   get hidden() {
     return this._hidden;
   },
+  comments: commentsList,
   setPictureUrl(value) {
     this.container.querySelector(`.${CLASS_BIG_PICTURE_IMAGE}`).children[0].src = value;
   },
@@ -48,6 +50,7 @@ const fullSizePhoto = {
     this.setPictureUrl(picture.url);
     this.setLikesCount(picture.likes);
     this.setDescription(picture.description);
+    this.comments.init(picture.comments, 5);
     document.body.classList.add('modal-open');
     this.hidden = false;
     this.closeButton.addEventListener('click', this.closeButtonClick);
@@ -55,6 +58,7 @@ const fullSizePhoto = {
   },
   hide() {
     document.body.classList.remove('modal-open');
+    this.comments.release();
     this.hidden = true;
     this.closeButton.removeEventListener('click', this.closeButtonClick);
     document.removeEventListener('keydown', this.escapeKeyDown);
