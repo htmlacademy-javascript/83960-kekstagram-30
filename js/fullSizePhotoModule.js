@@ -67,7 +67,7 @@ const fullSizePhoto = {
     fullSizePhoto.hide();
   },
   escapeKeyDown(evt) {
-    if (evt.keyCode === 27 && !fullSizePhoto.hidden) {
+    if (evt.key === 'Escape' && !fullSizePhoto.hidden) {
       fullSizePhoto.hide();
     }
   },
