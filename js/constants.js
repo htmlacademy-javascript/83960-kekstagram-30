@@ -43,18 +43,24 @@ const MAX_LIKES_COUNT = 200;
 const USER_PHOTO_COUNT = 25;
 
 //Имена классов для галереи миниатюр
-const CLASS_PICTURE_IMAGE = 'picture__img';
-const CLASS_PICTURE_LIKES = 'picture__likes';
-const CLASS_PICTURE_COMMENTS = 'picture__comments';
+const PICTURE_IMAGE_CLASS = 'picture__img';
+const PICTURE_LIKES_CLASS = 'picture__likes';
+const PICTURE_COMMENTS_CLASS = 'picture__comments';
 
 //Имена классов для полноразмерного изображения
-const CLASS_CLOSE_BUTTON = 'big-picture__cancel';
-const CLASS_BIG_PICTURE_IMAGE = 'big-picture__img';
-const CLASS_BIG_PICTURE_LIKES = 'likes-count';
-const CLASS_BIG_PICTURE_DESCRIPTION = 'social__caption';
+const BIG_PICTURE_CLOSE_BUTTON_CLASS = 'big-picture__cancel';
+const BIG_PICTURE_IMAGE_CLASS = 'big-picture__img';
+const BIG_PICTURE_LIKES_CLASS = 'likes-count';
+const BIG_PICTURE_DESCRIPTION_CLASS = 'social__caption';
 
+//Имена классов для блока комментарие
+const LIST_COMMENTS_CLASS = 'social__comments';
+const COMMENT_SHOWN_COUNT_CLASS = 'social__comment-shown-count';
+const COMMENT_TOTAL_COUNT_CLASS = 'social__comment-total-count';
+const COMMENTS_LOADER_BUTTON_CLASS = 'comments-loader';
 
 export { AUTHORS_NAMES, PHOTO_DESCRIPTIONS, COMMENT_MESSAGES, MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER };
 export { MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT, USER_PHOTO_COUNT, MIN_LIKES_COUNT, MAX_LIKES_COUNT };
-export { CLASS_PICTURE_IMAGE, CLASS_PICTURE_LIKES, CLASS_PICTURE_COMMENTS };
-export { CLASS_CLOSE_BUTTON, CLASS_BIG_PICTURE_IMAGE, CLASS_BIG_PICTURE_LIKES, CLASS_BIG_PICTURE_DESCRIPTION };
+export { PICTURE_IMAGE_CLASS, PICTURE_LIKES_CLASS, PICTURE_COMMENTS_CLASS };
+export { BIG_PICTURE_CLOSE_BUTTON_CLASS, BIG_PICTURE_IMAGE_CLASS, BIG_PICTURE_LIKES_CLASS, BIG_PICTURE_DESCRIPTION_CLASS };
+export {LIST_COMMENTS_CLASS, COMMENT_SHOWN_COUNT_CLASS, COMMENT_TOTAL_COUNT_CLASS, COMMENTS_LOADER_BUTTON_CLASS};

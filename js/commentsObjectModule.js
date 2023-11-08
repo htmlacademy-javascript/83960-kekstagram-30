@@ -1,7 +1,5 @@
-const CLASS_LIST_COMMENTS = 'social__comments';
-const CLASS_COMMENT_SHOWN_COUNT = 'social__comment-shown-count';
-const CLASS_COMMENT_TOTAL_COUNT = 'social__comment-total-count';
-const CLASS_COMMENTS_LOADER_BUTTON = 'comments-loader';
+import {LIST_COMMENTS_CLASS, COMMENT_SHOWN_COUNT_CLASS, COMMENT_TOTAL_COUNT_CLASS, COMMENTS_LOADER_BUTTON_CLASS} from './constants.js';
+
 
 const commentsList = {
   arrayComments: [],
@@ -15,21 +13,17 @@ const commentsList = {
     return this._listComments;
   },
   setNumberCommentsShown() {
-    document.querySelector(`.${CLASS_COMMENT_SHOWN_COUNT}`).textContent = this.showFromNumber;
+    document.querySelector(`.${COMMENT_SHOWN_COUNT_CLASS}`).textContent = this.showFromNumber;
   },
   setNumberCommentsTotal(numberTotal) {
     this.numberCommentsTotal = numberTotal;
-    document.querySelector(`.${CLASS_COMMENT_TOTAL_COUNT}`).textContent = numberTotal;
+    document.querySelector(`.${COMMENT_TOTAL_COUNT_CLASS}`).textContent = numberTotal;
   },
   makeCommentItem(anyComment) {
-    return '<li class="social__comment">' +
-      '<img ' +
-      'class="social__picture" ' +
-      `src="${anyComment.avatar}" ` +
-      `alt="${anyComment.name}" ` +
-      'width="35" height="35">' +
-      `<p class="social__text">${anyComment.message}</p>` +
-      '</li>';
+    return `<li class="social__comment">
+      <img class="social__picture" src="${anyComment.avatar}" alt="${anyComment.name}" width="35" height="35">
+      <p class="social__text">${anyComment.message}</p>
+      </li>`;
   },
   showNextComments(clearPrevious = false) {
     if (clearPrevious) {
@@ -46,7 +40,7 @@ const commentsList = {
     this.listComments.innerHTML += documentFragment.innerHTML;
   },
   setCommentsLoaderButton() {
-    this.commentsLoaderButton = document.querySelector(`.${CLASS_COMMENTS_LOADER_BUTTON}`);
+    this.commentsLoaderButton = document.querySelector(`.${COMMENTS_LOADER_BUTTON_CLASS}`);
     this.commentsLoaderButton.addEventListener('click', this.commentsLoaderButtonClick);
   },
   commentsLoaderButtonClick() {
@@ -57,7 +51,7 @@ const commentsList = {
     this.setNumberCommentsTotal(this.arrayComments.length);
     this.numberCommentsShown = Math.min(this.numberCommentsTotal, numberShown);
     this.showFromNumber = 0;
-    this.listComments = CLASS_LIST_COMMENTS;
+    this.listComments = LIST_COMMENTS_CLASS;
     this.showNextComments(true);
     this.setCommentsLoaderButton();
   },

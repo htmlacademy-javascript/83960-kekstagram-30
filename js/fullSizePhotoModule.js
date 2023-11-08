@@ -1,10 +1,10 @@
 import { commentsList } from './commentsObjectModule';
-import { CLASS_CLOSE_BUTTON, CLASS_BIG_PICTURE_IMAGE, CLASS_BIG_PICTURE_LIKES, CLASS_BIG_PICTURE_DESCRIPTION } from './constants';
+import { BIG_PICTURE_CLOSE_BUTTON_CLASS, BIG_PICTURE_IMAGE_CLASS, BIG_PICTURE_LIKES_CLASS, BIG_PICTURE_DESCRIPTION_CLASS } from './constants';
 
 const fullSizePhoto = {
   init(containerClass) {
     this.container = containerClass;
-    this.closeButton = CLASS_CLOSE_BUTTON;
+    this.closeButton = BIG_PICTURE_CLOSE_BUTTON_CLASS;
   },
   set source(value) {
     this._source = value;
@@ -37,13 +37,13 @@ const fullSizePhoto = {
   },
   comments: commentsList,
   setPictureUrl(value) {
-    this.container.querySelector(`.${CLASS_BIG_PICTURE_IMAGE}`).children[0].src = value;
+    this.container.querySelector(`.${BIG_PICTURE_IMAGE_CLASS}`).children[0].src = value;
   },
   setLikesCount(value) {
-    this.container.querySelector(`.${CLASS_BIG_PICTURE_LIKES}`).textContent = value;
+    this.container.querySelector(`.${BIG_PICTURE_LIKES_CLASS}`).textContent = value;
   },
   setDescription(value) {
-    this.container.querySelector(`.${CLASS_BIG_PICTURE_DESCRIPTION}`).textContent = value;
+    this.container.querySelector(`.${BIG_PICTURE_DESCRIPTION_CLASS}`).textContent = value;
   },
   show(picture) {
     this.source = picture;
