@@ -36,14 +36,17 @@ const fullSizePhoto = {
     return this._hidden;
   },
   comments: commentsList,
+  searchElementInside(className) {
+    return this.container.querySelector(`.${className}`);
+  },
   setPictureUrl(value) {
-    this.container.querySelector(`.${BIG_PICTURE_IMAGE_CLASS}`).children[0].src = value;
+    this.searchElementInside(BIG_PICTURE_IMAGE_CLASS).children[0].src = value;
   },
   setLikesCount(value) {
-    this.container.querySelector(`.${BIG_PICTURE_LIKES_CLASS}`).textContent = value;
+    this.searchElementInside(BIG_PICTURE_LIKES_CLASS).textContent = value;
   },
   setDescription(value) {
-    this.container.querySelector(`.${BIG_PICTURE_DESCRIPTION_CLASS}`).textContent = value;
+    this.searchElementInside(BIG_PICTURE_DESCRIPTION_CLASS).textContent = value;
   },
   show(picture) {
     this.source = picture;
