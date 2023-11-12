@@ -1,13 +1,14 @@
-import { PICTURE_IMAGE_CLASS, PICTURE_LIKES_CLASS, PICTURE_COMMENTS_CLASS } from './constants';
+import { PICTURE_IMAGE_CLASS, PICTURE_LIKES_CLASS, PICTURE_COMMENTS_CLASS } from './constants.js';
 
 const thumbnailsGallery = {
   init(source, idTemplate, className) {
     this._thumbnailsSource = source;
     this.thumbnailTemplate = idTemplate;
     this.thumbnailsContainer = className;
-    this.thumbnailsContainer.onclick = this._thumbnailsContainerClick;
+    this.thumbnailsContainer.addEventListener('click', this._onThumbnailsContainerClick);
+    this.fill();
   },
-  _thumbnailsContainerClick(evt) {
+  _onThumbnailsContainerClick(evt) {
     if (evt.target.className === PICTURE_IMAGE_CLASS) {
       evt.preventDefault();
       const pictureFileName = evt.target.src.split('/').at(-1);
