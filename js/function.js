@@ -64,5 +64,14 @@ const generateUniqueID = (min = 1, max = 65535) => {
   };
 };
 
+const setBodyModalMode = function(value) {
+  if (value) {
+    document.body.classList.add('modal-open');
+  } else {
+    document.body.classList.remove('modal-open');
+  }
+};
+
 export { getRandomInteger, getRandomElement, generateUniqueID };
 export { isPalindrome, checkLength, numberFromString, isMeetingValid };
+export { setBodyModalMode };
