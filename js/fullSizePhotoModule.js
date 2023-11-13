@@ -1,16 +1,10 @@
-import { commentsList } from './commentsObjectModule';
-import { BIG_PICTURE_CLOSE_BUTTON_CLASS, BIG_PICTURE_IMAGE_CLASS, BIG_PICTURE_LIKES_CLASS, BIG_PICTURE_DESCRIPTION_CLASS } from './constants';
+import { commentsList } from './commentsObjectModule.js';
+import { BIG_PICTURE_IMAGE_CLASS, BIG_PICTURE_LIKES_CLASS, BIG_PICTURE_DESCRIPTION_CLASS, NUMBER_COMMENTS_SHOWN } from './constants.js';
 
 const fullSizePhoto = {
-  init(containerClass) {
+  init(containerClass, closeButtonClass) {
     this.container = containerClass;
-    this.closeButton = BIG_PICTURE_CLOSE_BUTTON_CLASS;
-  },
-  set source(value) {
-    this._source = value;
-  },
-  get source() {
-    return this._source;
+    this.closeButton = closeButtonClass;
   },
   set container(className) {
     this._container = document.querySelector(`.${className}`);
@@ -48,12 +42,11 @@ const fullSizePhoto = {
   setDescription(value) {
     this.searchElementInside(BIG_PICTURE_DESCRIPTION_CLASS).textContent = value;
   },
-  show(picture) {
-    this.source = picture;
-    this.setPictureUrl(picture.url);
-    this.setLikesCount(picture.likes);
-    this.setDescription(picture.description);
-    this.comments.init(picture.comments, 5);
+  show({url, likes, description, comments}) {
+    this.setPictureUrl(url);
+    this.setLikesCount(likes);
+    this.setDescription(description);
+    this.comments.init(comments, NUMBER_COMMENTS_SHOWN);
     document.body.classList.add('modal-open');
     this.hidden = false;
     this.closeButton.addEventListener('click', this.closeButtonClick);

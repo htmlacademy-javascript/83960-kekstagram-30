@@ -1,13 +1,16 @@
-import { getUserPhotos } from './data';
-import { fullSizePhoto } from './fullSizePhotoModule';
-import { thumbnailsGallery } from './galleryObjectModule';
+import { BIG_PICTURE_CLOSE_BUTTON_CLASS, BIG_PICTURE_CONTAINER_CLASS, PICTURE_IMAGE_CLASS } from './constants.js';
+import { getUserPhotos } from './data.js';
+import { fullSizePhoto } from './fullSizePhotoModule.js';
+import { thumbnailsGallery } from './galleryObjectModule.js';
 
 thumbnailsGallery.init(getUserPhotos(), 'picture', 'pictures');
-thumbnailsGallery.fill();
 
-fullSizePhoto.init('big-picture');
+fullSizePhoto.init(BIG_PICTURE_CONTAINER_CLASS, BIG_PICTURE_CLOSE_BUTTON_CLASS);
 
-thumbnailsGallery.thumbnailsContainer.addEventListener('click', () => {
-  //console.log(thumbnailsGallery.clickedPicture);
-  fullSizePhoto.show(thumbnailsGallery.clickedPicture);
-});
+const onThumbnailsContainerClick = function (evt) {
+  if (evt.target.className === PICTURE_IMAGE_CLASS) {
+    fullSizePhoto.show(thumbnailsGallery.clickedPicture);
+  }
+};
+
+thumbnailsGallery.thumbnailsContainer.addEventListener('click', onThumbnailsContainerClick);

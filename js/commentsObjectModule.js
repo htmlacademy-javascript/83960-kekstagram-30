@@ -19,10 +19,10 @@ const commentsList = {
     this.numberCommentsTotal = numberTotal;
     document.querySelector(`.${COMMENT_TOTAL_COUNT_CLASS}`).textContent = numberTotal;
   },
-  makeCommentItem(anyComment) {
+  makeCommentItem({avatar, name, message}) {
     return `<li class="social__comment">
-      <img class="social__picture" src="${anyComment.avatar}" alt="${anyComment.name}" width="35" height="35">
-      <p class="social__text">${anyComment.message}</p>
+      <img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35">
+      <p class="social__text">${message}</p>
       </li>`;
   },
   showNextComments(clearPrevious = false) {
