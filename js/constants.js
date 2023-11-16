@@ -65,24 +65,24 @@ const fullSizePhotoModuleClasses = {
   numberCommentsShown: 5,
 };
 
-//Имена классов для блока комментариев
-const LIST_COMMENTS_CLASS = 'social__comments';
-const COMMENT_SHOWN_COUNT_CLASS = 'social__comment-shown-count';
-const COMMENT_TOTAL_COUNT_CLASS = 'social__comment-total-count';
-const COMMENTS_LOADER_BUTTON_CLASS = 'comments-loader';
-const NUMBER_COMMENTS_SHOWN = 5;
+//Имена классов для модуля комментариев
+const commentsObjectModuleClasses = {
+  listCommentsClass: 'social__comments',
+  commentShownCountClass: 'social__comment-shown-count',
+  commentTotalCountClass: 'social__comment-total-count',
+  commentsLoaderButtonClass: 'comments-loader',
+};
 
 //Имена классов для формы загрузки изображений
-const IMAGE_UPLOAD_FORM_CLASS = 'img-upload__form';
-const IMAGE_UPLOAD_INPUT_CLASS = 'img-upload__input';
-const IMAGE_EDITING_FORM_CLASS = 'img-upload__overlay';
-const IMAGE_UPLOAD_PREVIEW_CLASS = 'img-upload__preview img';
-const CLOSE_FORM_BUTTON_CLASS = 'img-upload__cancel';
-const HASHTAG_INPUT_CLASS = 'text__hashtags';
-
+const uploadFormClasses = {
+  imageUploadFormClass: 'img-upload__form',
+  imageUploadInputClass: 'img-upload__input',
+  imageUploadPreviewClass: 'img-upload__preview img',
+  imageEditingFormClass: 'img-upload__overlay',
+  formCloseButtonClass: 'img-upload__cancel',
+  hashtagInputClass: 'text__hashtags',
+};
 
 export { AUTHORS_NAMES, PHOTO_DESCRIPTIONS, COMMENT_MESSAGES, MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER };
 export { MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT, USER_PHOTO_COUNT, MIN_LIKES_COUNT, MAX_LIKES_COUNT };
-export { thumbnailGalleryClasses, galleryModuleClasses, fullSizePhotoModuleClasses };
-export {LIST_COMMENTS_CLASS, COMMENT_SHOWN_COUNT_CLASS, COMMENT_TOTAL_COUNT_CLASS, COMMENTS_LOADER_BUTTON_CLASS, NUMBER_COMMENTS_SHOWN};
-export { IMAGE_UPLOAD_FORM_CLASS, IMAGE_UPLOAD_INPUT_CLASS, IMAGE_EDITING_FORM_CLASS, IMAGE_UPLOAD_PREVIEW_CLASS, CLOSE_FORM_BUTTON_CLASS, HASHTAG_INPUT_CLASS };
+export { thumbnailGalleryClasses, galleryModuleClasses, fullSizePhotoModuleClasses, commentsObjectModuleClasses, uploadFormClasses };

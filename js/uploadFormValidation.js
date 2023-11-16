@@ -1,4 +1,3 @@
-import { HASHTAG_INPUT_CLASS } from './constants.js';
 
 const pristineFormValidator = {
   _pristineConfig : {
@@ -17,9 +16,9 @@ const pristineFormValidator = {
   _getErrorMessage() {
     return pristineFormValidator._errorMessage;
   },
-  init(form) {
+  init(form, hashtagInputClass) {
     this._validateForm = form;
-    this._hashtagInput = this._validateForm.querySelector(`.${HASHTAG_INPUT_CLASS}`);
+    this._hashtagInput = this._validateForm.querySelector(`.${hashtagInputClass}`);
     this.pristine = new Pristine(this._validateForm, this._pristineConfig, true);
     this.pristine.addValidator(this._hashtagInput, this._hashtagInputValidate, pristineFormValidator._getErrorMessage);
   },

@@ -1,9 +1,9 @@
+import { uploadFormClasses as classes } from './constants.js';
 import { setBodyModalMode } from './function.js';
-import { IMAGE_UPLOAD_FORM_CLASS, IMAGE_UPLOAD_INPUT_CLASS, IMAGE_EDITING_FORM_CLASS, IMAGE_UPLOAD_PREVIEW_CLASS, CLOSE_FORM_BUTTON_CLASS } from './constants.js';
 import { pristineFormValidator } from './uploadFormValidation.js';
 
-const imageUploadForm = document.querySelector(`.${IMAGE_UPLOAD_FORM_CLASS}`);
-const imageUploadInput = imageUploadForm.querySelector(`.${IMAGE_UPLOAD_INPUT_CLASS}`);
+const imageUploadForm = document.querySelector(`.${classes.imageUploadFormClass}`);
+const imageUploadInput = imageUploadForm.querySelector(`.${classes.imageUploadInputClass}`);
 
 const imageEditingForm = {
   _validator: pristineFormValidator,
@@ -48,10 +48,10 @@ const imageEditingForm = {
     }
   },
   init() {
-    this.container = IMAGE_EDITING_FORM_CLASS;
-    this.preview = IMAGE_UPLOAD_PREVIEW_CLASS;
-    this.closeButton = CLOSE_FORM_BUTTON_CLASS;
-    this._validator.init(imageUploadForm);
+    this.container = classes.imageEditingFormClass;
+    this.preview = classes.imageUploadPreviewClass;
+    this.closeButton = classes.formCloseButtonClass;
+    this._validator.init(imageUploadForm, classes.hashtagInputClass);
   },
   show(file) {
     this.preview.src = URL.createObjectURL(file);
