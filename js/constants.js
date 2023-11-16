@@ -42,23 +42,28 @@ const MAX_LIKES_COUNT = 200;
 
 const USER_PHOTO_COUNT = 25;
 
-//Имена классов для галереи миниатюр
-const PICTURE_IMAGE_CLASS = 'picture__img';
-const PICTURE_LIKES_CLASS = 'picture__likes';
-const PICTURE_COMMENTS_CLASS = 'picture__comments';
-
+//Имена классов для объекта галереи миниатюр
 const thumbnailGalleryClasses = {
   pictureImageClass: 'picture__img',
   pictureLikesClass: 'picture__likes',
   pictureCommentsClass: 'picture__comments',
 };
 
-//Имена классов для полноразмерного изображения
-const BIG_PICTURE_CONTAINER_CLASS = 'big-picture';
-const BIG_PICTURE_CLOSE_BUTTON_CLASS = 'big-picture__cancel';
-const BIG_PICTURE_IMAGE_CLASS = 'big-picture__img';
-const BIG_PICTURE_LIKES_CLASS = 'likes-count';
-const BIG_PICTURE_DESCRIPTION_CLASS = 'social__caption';
+//Имена классов для инициализирующего модуля галереи миниатюр
+const galleryModuleClasses = {
+  bigPictureCloseButtonClass: 'big-picture__cancel',
+  bigPictureContainerClass: 'big-picture',
+  thumbnailTemplateId: 'picture',
+  thumbnailContainerClass: 'pictures',
+};
+
+//Имена классов для модуля полноразмерного изображения
+const fullSizePhotoModuleClasses = {
+  bigPictureImageClass: 'big-picture__img',
+  bigPictureLikesClass: 'likes-count',
+  bigPictureDescriptionClass: 'social__caption',
+  numberCommentsShown: 5,
+};
 
 //Имена классов для блока комментариев
 const LIST_COMMENTS_CLASS = 'social__comments';
@@ -78,8 +83,6 @@ const HASHTAG_INPUT_CLASS = 'text__hashtags';
 
 export { AUTHORS_NAMES, PHOTO_DESCRIPTIONS, COMMENT_MESSAGES, MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER };
 export { MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT, USER_PHOTO_COUNT, MIN_LIKES_COUNT, MAX_LIKES_COUNT };
-//export { PICTURE_IMAGE_CLASS, PICTURE_LIKES_CLASS, PICTURE_COMMENTS_CLASS };
-export { thumbnailGalleryClasses };
-export { BIG_PICTURE_CONTAINER_CLASS, BIG_PICTURE_CLOSE_BUTTON_CLASS, BIG_PICTURE_IMAGE_CLASS, BIG_PICTURE_LIKES_CLASS, BIG_PICTURE_DESCRIPTION_CLASS };
+export { thumbnailGalleryClasses, galleryModuleClasses, fullSizePhotoModuleClasses };
 export {LIST_COMMENTS_CLASS, COMMENT_SHOWN_COUNT_CLASS, COMMENT_TOTAL_COUNT_CLASS, COMMENTS_LOADER_BUTTON_CLASS, NUMBER_COMMENTS_SHOWN};
 export { IMAGE_UPLOAD_FORM_CLASS, IMAGE_UPLOAD_INPUT_CLASS, IMAGE_EDITING_FORM_CLASS, IMAGE_UPLOAD_PREVIEW_CLASS, CLOSE_FORM_BUTTON_CLASS, HASHTAG_INPUT_CLASS };
