@@ -1,5 +1,6 @@
 import { uploadFormClasses as classes } from './constants.js';
 import { setBodyModalMode } from './function.js';
+import { scalingObject } from './imageScalingModule.js';
 import { pristineFormValidator } from './uploadFormValidation.js';
 
 const imageUploadForm = document.querySelector(`.${classes.imageUploadFormClass}`);
@@ -55,6 +56,7 @@ const imageEditingForm = {
   },
   show(file) {
     this.preview.src = URL.createObjectURL(file);
+    scalingObject.init(this.preview);
     this.container.classList.remove('hidden');
     setBodyModalMode(true);
     this.closeButton.addEventListener('click', this.onCloseButtonClick);
@@ -63,6 +65,7 @@ const imageEditingForm = {
   },
   hide() {
     imageUploadForm.reset();
+    scalingObject.reset();
     this.container.classList.add('hidden');
     setBodyModalMode(false);
     this.closeButton.removeEventListener('click', this.onCloseButtonClick);
