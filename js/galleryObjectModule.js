@@ -1,4 +1,4 @@
-import { thumbnailGalleryClasses } from './constants.js';
+import { ThumbnailGalleryClasses as classes } from './constants.js';
 import { fullSizePhoto } from './fullSizePhotoModule.js';
 
 const thumbnailsGallery = {
@@ -10,7 +10,7 @@ const thumbnailsGallery = {
     this.fill();
   },
   _onThumbnailsContainerClick(evt) {
-    if (evt.target.className === thumbnailGalleryClasses.pictureImageClass) {
+    if (evt.target.className === classes.PICTURE_IMAGE_CLASS) {
       evt.preventDefault();
       const pictureFileName = evt.target.src.split('/').at(-1);
       thumbnailsGallery.clickedPicture = thumbnailsGallery._thumbnailsSource.findIndex((picture) => (picture.url.includes(`/${pictureFileName}`)));
@@ -38,11 +38,11 @@ const thumbnailsGallery = {
   },
   _createNewThumbnail(photo) {
     const newThumbnail = this.thumbnailTemplate.cloneNode(true);
-    const newThumbnailImage = newThumbnail.querySelector(`.${thumbnailGalleryClasses.pictureImageClass}`);
+    const newThumbnailImage = newThumbnail.querySelector(`.${classes.PICTURE_IMAGE_CLASS}`);
     newThumbnailImage.src = photo.url;
     newThumbnailImage.alt = photo.description;
-    newThumbnail.querySelector(`.${thumbnailGalleryClasses.pictureLikesClass}`).textContent = photo.likes;
-    newThumbnail.querySelector(`.${thumbnailGalleryClasses.pictureCommentsClass}`).textContent = photo.comments.length;
+    newThumbnail.querySelector(`.${classes.PICTURE_LIKES_CLASS}`).textContent = photo.likes;
+    newThumbnail.querySelector(`.${classes.PICTURE_COMMENTS_CLASS}`).textContent = photo.comments.length;
     return newThumbnail;
   },
   fill() {

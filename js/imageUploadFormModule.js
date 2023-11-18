@@ -1,10 +1,10 @@
-import { uploadFormClasses as classes } from './constants.js';
+import { UploadFormClasses as classes } from './constants.js';
 import { setBodyModalMode } from './function.js';
 import { scalingObject } from './imageScalingModule.js';
 import { pristineFormValidator } from './uploadFormValidation.js';
 
-const imageUploadForm = document.querySelector(`.${classes.imageUploadFormClass}`);
-const imageUploadInput = imageUploadForm.querySelector(`.${classes.imageUploadInputClass}`);
+const imageUploadForm = document.querySelector(`.${classes.IMAGE_UPLOAD_FORM_CLASS}`);
+const imageUploadInput = imageUploadForm.querySelector(`.${classes.IMAGE_UPLOAD_INPUT_CLASS}`);
 
 const imageEditingForm = {
   _validator: pristineFormValidator,
@@ -34,7 +34,7 @@ const imageEditingForm = {
   },
   onDocumentKeyDown(evt) {
     if (evt.key === 'Escape') {
-      if (evt.target.className === 'text__description') {
+      if ((evt.target.className === 'text__description') || (evt.target.className === 'text__hashtags')) {
         evt.stopPropagation();
         evt.preventDefault();
       } else {
@@ -49,10 +49,10 @@ const imageEditingForm = {
     }
   },
   init() {
-    this.container = classes.imageEditingFormClass;
-    this.preview = classes.imageUploadPreviewClass;
-    this.closeButton = classes.formCloseButtonClass;
-    this._validator.init(imageUploadForm, classes.hashtagInputClass);
+    this.container = classes.IMAGE_EDITING_FORM_CLASS;
+    this.preview = classes.IMAGE_UPLOAD_PREVIEW_CLASS;
+    this.closeButton = classes.FORM_CLOSE_BUTTON_CLASS;
+    this._validator.init(imageUploadForm, classes.HASHTAG_INPUT_CLASS);
   },
   show(file) {
     this.preview.src = URL.createObjectURL(file);

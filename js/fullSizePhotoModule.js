@@ -1,5 +1,5 @@
 import { commentsList } from './commentsObjectModule.js';
-import { fullSizePhotoModuleClasses as classes } from './constants.js';
+import { FullSizePhotoModuleClasses as classes } from './constants.js';
 
 const fullSizePhoto = {
   init(containerClass, closeButtonClass) {
@@ -34,19 +34,19 @@ const fullSizePhoto = {
     return this.container.querySelector(`.${className}`);
   },
   setPictureUrl(value) {
-    this.searchElementInside(classes.bigPictureImageClass).children[0].src = value;
+    this.searchElementInside(classes.BIG_PICTURE_IMAGE_CLASS).children[0].src = value;
   },
   setLikesCount(value) {
-    this.searchElementInside(classes.bigPictureLikesClass).textContent = value;
+    this.searchElementInside(classes.BIG_PICTURE_LIKES_CLASS).textContent = value;
   },
   setDescription(value) {
-    this.searchElementInside(classes.bigPictureDescriptionClass).textContent = value;
+    this.searchElementInside(classes.BIG_PICTURE_DESCRIPTION_CLASS).textContent = value;
   },
   show({url, likes, description, comments}) {
     this.setPictureUrl(url);
     this.setLikesCount(likes);
     this.setDescription(description);
-    this.comments.init(comments, classes.numberCommentsShown);
+    this.comments.init(comments, classes.NUMBER_COMMENTS_SHOWN);
     document.body.classList.add('modal-open');
     this.hidden = false;
     this.closeButton.addEventListener('click', this.closeButtonClick);
