@@ -83,6 +83,24 @@ const UploadFormClasses = {
   HASHTAG_INPUT_CLASS: 'text__hashtags',
 };
 
+//Константы для модуля масштабирования изображения
+const ImageScalingClasses = {
+  ZOOM_OUT_BUTTON_CLASS: 'scale__control--smaller',
+  ZOOM_IN_BUTTON_CLASS: 'scale__control--bigger',
+  ZOOM_VALUE_INPUT_CLASS: 'scale__control--value',
+  MAX_SCALE_VALUE: 100,
+  MIN_SCALE_VALUE: 25,
+  SCALING_STEP: 25,
+};
+
+
 export { AUTHORS_NAMES, PHOTO_DESCRIPTIONS, COMMENT_MESSAGES, MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER };
 export { MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT, USER_PHOTO_COUNT, MIN_LIKES_COUNT, MAX_LIKES_COUNT };
-export { ThumbnailGalleryClasses, GalleryModuleClasses, FullSizePhotoModuleClasses, CommentsObjectModuleClasses, UploadFormClasses };
+export {
+  ThumbnailGalleryClasses,
+  GalleryModuleClasses,
+  FullSizePhotoModuleClasses,
+  CommentsObjectModuleClasses,
+  UploadFormClasses,
+  ImageScalingClasses
+};
