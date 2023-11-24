@@ -1,13 +1,16 @@
 import { UploadFormClasses as classes } from './constants.js';
 import { setBodyModalMode } from './function.js';
 import { scalingObject } from './imageScalingModule.js';
+import { effectSelectionObject } from './sliderObjectModule.js';
 import { pristineFormValidator } from './uploadFormValidation.js';
+//import { effectLevelSlider } from './sliderObjectModule.js';
 
 const imageUploadForm = document.querySelector(`.${classes.IMAGE_UPLOAD_FORM_CLASS}`);
 const imageUploadInput = imageUploadForm.querySelector(`.${classes.IMAGE_UPLOAD_INPUT_CLASS}`);
 
 const imageEditingForm = {
   _validator: pristineFormValidator,
+  _effectSelection: effectSelectionObject,
   set container(formClassName) {
     this._container = imageUploadForm.querySelector(`.${formClassName}`);
   },
@@ -53,6 +56,7 @@ const imageEditingForm = {
     this.preview = classes.IMAGE_UPLOAD_PREVIEW_CLASS;
     this.closeButton = classes.FORM_CLOSE_BUTTON_CLASS;
     this._validator.init(imageUploadForm, classes.HASHTAG_INPUT_CLASS);
+    this._effectSelection.init(imageUploadForm);
   },
   show(file) {
     this.preview.src = URL.createObjectURL(file);
@@ -66,6 +70,7 @@ const imageEditingForm = {
   hide() {
     imageUploadForm.reset();
     scalingObject.reset();
+    this._effectSelection.reset();
     this.container.classList.add('hidden');
     setBodyModalMode(false);
     this.closeButton.removeEventListener('click', this.onCloseButtonClick);
