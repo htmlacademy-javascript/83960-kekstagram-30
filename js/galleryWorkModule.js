@@ -1,5 +1,4 @@
 import { GalleryModuleClasses as classes } from './constants.js';
-//import { getUserPhotos } from './data.js';
 import { fullSizePhoto } from './fullSizePhotoModule.js';
 import { thumbnailsGallery } from './galleryObjectModule.js';
 import { createLoader } from './getDataModule.js';

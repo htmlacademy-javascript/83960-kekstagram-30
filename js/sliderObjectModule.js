@@ -25,7 +25,7 @@ const sliderObject = {
   visible: true,
   init(sliderElement, sliderContainer, sliderInput) {
     this.slider = noUiSlider.create(sliderElement, this.sliderOptions);
-    this.sliderInput = sliderInput; //document.querySelector('.effect-level__value');
+    this.sliderInput = sliderInput;
     this.sliderContainer = sliderContainer;
     this.hide();
     this.slider.on('update', this.onSliderUpdate);
@@ -152,9 +152,5 @@ const effectSelectionObject = {
     }
   },
 };
-
-//const s = `grayscale(${value})`;
-
-//const effectSelectionElement = document.querySelector('.effects__radio');
 
 export { sliderObject, effectSelectionObject };
