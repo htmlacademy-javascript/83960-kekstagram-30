@@ -1,13 +1,18 @@
 import { ThumbnailGalleryClasses as classes } from './constants.js';
 import { fullSizePhoto } from './fullSizePhotoModule.js';
 
+const compareLikes = function (photoA, photoB) {
+  return photoB.likes - photoA.likes;
+};
+
 const thumbnailsGallery = {
   init(source, idTemplate, className) {
     this._thumbnailsSource = source;
     this.thumbnailTemplate = idTemplate;
     this.thumbnailsContainer = className;
+    this._containerHTML = this.thumbnailsContainer.innerHTML;
     this.thumbnailsContainer.addEventListener('click', this._onThumbnailsContainerClick);
-    this.fill();
+    this.fill(this._thumbnailsSource);
   },
   _onThumbnailsContainerClick(evt) {
     if (evt.target.className === classes.PICTURE_IMAGE_CLASS) {
@@ -18,6 +23,7 @@ const thumbnailsGallery = {
     }
   },
   _thumbnailsSource: [],
+  _containerHTML: '',
   set thumbnailTemplate(idTemplate) {
     this._thumbnailTemplate = document.querySelector(`#${idTemplate}`).content;
   },
@@ -36,6 +42,28 @@ const thumbnailsGallery = {
   get clickedPicture() {
     return this._thumbnailsSource[this._indexClickedPicture];
   },
+  set filter(newFilter) {
+    if (newFilter !== this._filter) {
+      this._filter = newFilter;
+      this.onFilterChange();
+    }
+  },
+  get filter() {
+    return this._filter;
+  },
+  onFilterChange() {
+    switch (this._filter) {
+      case 'filter-default':
+        this.fill(this._thumbnailsSource);
+        break;
+      case 'filter-random':
+        break;
+      case 'filter-discussed':
+        this.fill(this._thumbnailsSource.slice().sort(compareLikes));
+        break;
+    }
+    //console.dir(this._thumbnailsSource.slice().sort(compareLikes));
+  },
   _createNewThumbnail(photo) {
     const newThumbnail = this.thumbnailTemplate.cloneNode(true);
     const newThumbnailImage = newThumbnail.querySelector(`.${classes.PICTURE_IMAGE_CLASS}`);
@@ -45,11 +73,13 @@ const thumbnailsGallery = {
     newThumbnail.querySelector(`.${classes.PICTURE_COMMENTS_CLASS}`).textContent = photo.comments.length;
     return newThumbnail;
   },
-  fill() {
+  fill(arrayPhoto) {
     const documentFragment = document.createDocumentFragment();
-    this._thumbnailsSource.forEach((picture) => {
+    //this._thumbnailsSource.forEach((picture) => {
+    arrayPhoto.forEach((picture) => {
       documentFragment.appendChild(this._createNewThumbnail(picture));
     });
+    this.thumbnailsContainer.innerHTML = this._containerHTML;
     this.thumbnailsContainer.appendChild(documentFragment);
   },
 };
