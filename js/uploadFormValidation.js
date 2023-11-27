@@ -1,4 +1,3 @@
-import { HASHTAG_INPUT_CLASS } from './constants.js';
 
 const pristineFormValidator = {
   _pristineConfig : {
@@ -17,9 +16,9 @@ const pristineFormValidator = {
   _getErrorMessage() {
     return pristineFormValidator._errorMessage;
   },
-  init(form) {
+  init(form, hashtagInputClass) {
     this._validateForm = form;
-    this._hashtagInput = this._validateForm.querySelector(`.${HASHTAG_INPUT_CLASS}`);
+    this._hashtagInput = this._validateForm.querySelector(`.${hashtagInputClass}`);
     this.pristine = new Pristine(this._validateForm, this._pristineConfig, true);
     this.pristine.addValidator(this._hashtagInput, this._hashtagInputValidate, pristineFormValidator._getErrorMessage);
   },
@@ -29,18 +28,20 @@ const pristineFormValidator = {
     this.pristine.destroy();
   },
   _hashtagInputValidate(value) {
-    const arrayTags = value.split(' ');
-    if (!pristineFormValidator._isCountValid(arrayTags)) {
-      pristineFormValidator._errorMessage = 'Количество хэш-тегов не должно превышать 5';
-      return false;
-    }
-    if (!pristineFormValidator._isHashTagsValid(arrayTags)) {
-      pristineFormValidator._errorMessage = 'Введён невалидный хэш-тег';
-      return false;
-    }
-    if (!pristineFormValidator._isDuplicateHashtag(arrayTags)) {
-      pristineFormValidator._errorMessage = 'Хэш-теги не должны повторяться';
-      return false;
+    if (value.length !== 0) {
+      const arrayTags = value.split(' ');
+      if (!pristineFormValidator._isCountValid(arrayTags)) {
+        pristineFormValidator._errorMessage = 'Количество хэш-тегов не должно превышать 5';
+        return false;
+      }
+      if (!pristineFormValidator._isHashTagsValid(arrayTags)) {
+        pristineFormValidator._errorMessage = 'Введён невалидный хэш-тег';
+        return false;
+      }
+      if (pristineFormValidator._isDuplicateHashtag(arrayTags)) {
+        pristineFormValidator._errorMessage = 'Хэш-теги не должны повторяться';
+        return false;
+      }
     }
     return true;
   },
@@ -59,12 +60,19 @@ const pristineFormValidator = {
   },
   _isDuplicateHashtag(arrayTags) {
     let i = 0;
+    let j = 0;
     let result = false;
-    while (!result && i < arrayTags.length - 1) {
-      result = arrayTags.includes(arrayTags[i], i + 1);
-      i++;
+    if (arrayTags.length > 1) {
+      while (!result && i < arrayTags.length - 1) {
+        j = i + 1;
+        while (!result && j <= arrayTags.length - 1) {
+          result = !(arrayTags[i].localeCompare(arrayTags[j], undefined, { sensitivity: 'base' }));
+          j++;
+        }
+        i++;
+      }
     }
-    return !result;
+    return result;
   },
 };
 

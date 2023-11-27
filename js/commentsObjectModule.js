@@ -1,5 +1,4 @@
-import {LIST_COMMENTS_CLASS, COMMENT_SHOWN_COUNT_CLASS, COMMENT_TOTAL_COUNT_CLASS, COMMENTS_LOADER_BUTTON_CLASS} from './constants.js';
-
+import { CommentsObjectModuleClasses as classes } from './constants.js';
 
 const commentsList = {
   arrayComments: [],
@@ -13,11 +12,11 @@ const commentsList = {
     return this._listComments;
   },
   setNumberCommentsShown() {
-    document.querySelector(`.${COMMENT_SHOWN_COUNT_CLASS}`).textContent = this.showFromNumber;
+    document.querySelector(`.${classes.COMMENT_SHOWN_COUNT_CLASS}`).textContent = this.showFromNumber;
   },
   setNumberCommentsTotal(numberTotal) {
     this.numberCommentsTotal = numberTotal;
-    document.querySelector(`.${COMMENT_TOTAL_COUNT_CLASS}`).textContent = numberTotal;
+    document.querySelector(`.${classes.COMMENT_TOTAL_COUNT_CLASS}`).textContent = numberTotal;
   },
   makeCommentItem({avatar, name, message}) {
     return `<li class="social__comment">
@@ -40,7 +39,7 @@ const commentsList = {
     this.listComments.innerHTML += documentFragment.innerHTML;
   },
   setCommentsLoaderButton() {
-    this.commentsLoaderButton = document.querySelector(`.${COMMENTS_LOADER_BUTTON_CLASS}`);
+    this.commentsLoaderButton = document.querySelector(`.${classes.COMMENTS_LOADER_BUTTON_CLASS}`);
     this.commentsLoaderButton.addEventListener('click', this.commentsLoaderButtonClick);
   },
   commentsLoaderButtonClick() {
@@ -51,7 +50,7 @@ const commentsList = {
     this.setNumberCommentsTotal(this.arrayComments.length);
     this.numberCommentsShown = Math.min(this.numberCommentsTotal, numberShown);
     this.showFromNumber = 0;
-    this.listComments = LIST_COMMENTS_CLASS;
+    this.listComments = classes.LIST_COMMENTS_CLASS;
     this.showNextComments(true);
     this.setCommentsLoaderButton();
   },
