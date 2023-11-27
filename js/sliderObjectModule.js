@@ -66,6 +66,7 @@ const effectSelectionObject = {
   reset() {
     this.listEffects.forEach((item) => this.unsetEventHandler(item));
     this.effectLevelSlider.slider.off();
+    this.effectLevelSlider.slider.destroy();
   },
   setEventHandler(item) {
     item.addEventListener('click', this.onListEffectsClick);

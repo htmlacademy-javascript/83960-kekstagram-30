@@ -1,12 +1,13 @@
 import { UploadFormClasses as classes } from './constants.js';
-import { setBodyModalMode } from './function.js';
+import { setBodyModalMode } from './utils.js';
 import { scalingObject } from './imageScalingModule.js';
+import { sendData } from './sendDataModule.js';
 import { effectSelectionObject } from './sliderObjectModule.js';
 import { pristineFormValidator } from './uploadFormValidation.js';
-//import { effectLevelSlider } from './sliderObjectModule.js';
 
 const imageUploadForm = document.querySelector(`.${classes.IMAGE_UPLOAD_FORM_CLASS}`);
 const imageUploadInput = imageUploadForm.querySelector(`.${classes.IMAGE_UPLOAD_INPUT_CLASS}`);
+const submitButton = imageUploadForm.querySelector(`.${classes.FORM_SUBMIT_BUTTON_CLASS}`);
 
 const imageEditingForm = {
   _validator: pristineFormValidator,
@@ -37,18 +38,55 @@ const imageEditingForm = {
   },
   onDocumentKeyDown(evt) {
     if (evt.key === 'Escape') {
-      if ((evt.target.className === 'text__description') || (evt.target.className === 'text__hashtags')) {
-        evt.stopPropagation();
-        evt.preventDefault();
+      if (imageEditingForm.messagePosted) {
+        imageEditingForm.closeMessage('error');
       } else {
-        evt.preventDefault();
-        imageEditingForm.hide();
+        if ((evt.target.className === 'text__description') || (evt.target.className === 'text__hashtags')) {
+          evt.stopPropagation();
+          evt.preventDefault();
+        } else {
+          evt.preventDefault();
+          imageEditingForm.hide();
+        }
       }
     }
   },
+  successSend() {
+    imageEditingForm.showMessage('success');
+    submitButton.disabled = false;
+    imageEditingForm.hide();
+  },
+  failSend() {
+    imageEditingForm.showMessage('error');
+    submitButton.disabled = false;
+  },
+  showMessage(id) {
+    const template = document.querySelector(`#${id}`).content;
+    const message = template.cloneNode(true);
+    document.body.append(message);
+    imageEditingForm.messagePosted = id === 'error';
+    const messageSection = document.querySelector(`.${id}`);
+    messageSection.addEventListener('click', imageEditingForm.onSectionClick);
+  },
+  closeMessage(id) {
+    const section = document.querySelector(`.${id}`);
+    section.removeEventListener('click', imageEditingForm.onSectionClick);
+    section.remove();
+    imageEditingForm.messagePosted = false;
+  },
+  onSectionClick(evt) {
+    if ((evt.target.className === 'success') || (evt.target.className === 'success__button')) {
+      imageEditingForm.closeMessage('success');
+    } else if ((evt.target.className === 'error') || (evt.target.className === 'error__button')) {
+      imageEditingForm.closeMessage('error');
+    }
+  },
   onImageUploadFormSubmit(evt) {
-    if (!this._validator.pristine.validate()) {
-      evt.preventDefault();
+    evt.preventDefault();
+    if (imageEditingForm._validator.pristine.validate()) {
+      const sentData = new FormData(evt.target);
+      submitButton.disabled = true;
+      sendData(imageEditingForm.successSend, imageEditingForm.failSend, sentData);
     }
   },
   init() {

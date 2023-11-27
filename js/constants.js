@@ -80,6 +80,7 @@ const UploadFormClasses = {
   IMAGE_UPLOAD_PREVIEW_CLASS: 'img-upload__preview img',
   IMAGE_EDITING_FORM_CLASS: 'img-upload__overlay',
   FORM_CLOSE_BUTTON_CLASS: 'img-upload__cancel',
+  FORM_SUBMIT_BUTTON_CLASS: 'img-upload__submit',
   HASHTAG_INPUT_CLASS: 'text__hashtags',
 };
 

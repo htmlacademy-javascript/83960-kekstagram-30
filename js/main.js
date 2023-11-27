@@ -1,3 +1,3 @@
 import './galleryWorkModule.js';
 import './imageUploadFormModule.js';
-import './sliderObjectModule.js';
+//import './sliderObjectModule.js';
