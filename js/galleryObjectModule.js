@@ -64,7 +64,6 @@ const thumbnailsGallery = {
         this.fill(this._thumbnailsSource.slice().sort(compareLikes));
         break;
     }
-    //console.dir(this._thumbnailsSource.slice().sort(compareLikes));
   },
   _createNewThumbnail(photo) {
     const newThumbnail = this.thumbnailTemplate.cloneNode(true);
@@ -77,7 +76,6 @@ const thumbnailsGallery = {
   },
   fill(arrayPhoto) {
     const documentFragment = document.createDocumentFragment();
-    //this._thumbnailsSource.forEach((picture) => {
     arrayPhoto.forEach((picture) => {
       documentFragment.appendChild(this._createNewThumbnail(picture));
     });
