@@ -43,8 +43,6 @@ const getRandomElements = function (anyArray, amountElements) {
     resultArray.push(anyArray[getIndex()]);
   }
   return resultArray;
-  //console.log(resultArray);
-  //anyArray[getRandomInteger(0, anyArray.length - 1)];
 };
 
 
