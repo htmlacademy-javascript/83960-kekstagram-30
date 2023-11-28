@@ -4,8 +4,9 @@ import { thumbnailsGallery } from './galleryObjectModule.js';
 import { createLoader } from './getDataModule.js';
 import { showGetErrorMessage } from './utils.js';
 
-const initGallery = function (data) {
-  thumbnailsGallery.init(data, classes.THUMBNAIL_TEMPLATE_ID, classes.THUMBNAIL_CONTAINER_CLASS);
+const initGallery = function (otherUsersPhoto) {
+  thumbnailsGallery.init(otherUsersPhoto, classes.THUMBNAIL_TEMPLATE_ID, classes.THUMBNAIL_CONTAINER_CLASS);
+  document.querySelector('.img-filters').classList.remove('img-filters--inactive');
 };
 
 createLoader(initGallery, showGetErrorMessage);

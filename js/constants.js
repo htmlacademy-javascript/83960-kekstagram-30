@@ -1,3 +1,4 @@
+/*
 const AUTHORS_NAMES = [
   'Иван',
   'Хуан Себастьян',
@@ -41,6 +42,8 @@ const MIN_LIKES_COUNT = 15;
 const MAX_LIKES_COUNT = 200;
 
 const USER_PHOTO_COUNT = 25;
+*/
+const RANDOM_PHOTO_COUNT = 10;
 
 //Имена классов для объекта галереи миниатюр
 const ThumbnailGalleryClasses = {
@@ -94,14 +97,22 @@ const ImageScalingClasses = {
   SCALING_STEP: 25,
 };
 
-
-export { AUTHORS_NAMES, PHOTO_DESCRIPTIONS, COMMENT_MESSAGES, MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER };
+/*
+export {
+  AUTHORS_NAMES,
+  PHOTO_DESCRIPTIONS,
+  COMMENT_MESSAGES,
+  MIN_AVATAR_NUMBER,
+  MAX_AVATAR_NUMBER
+};
 export { MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT, USER_PHOTO_COUNT, MIN_LIKES_COUNT, MAX_LIKES_COUNT };
+*/
 export {
   ThumbnailGalleryClasses,
   GalleryModuleClasses,
   FullSizePhotoModuleClasses,
   CommentsObjectModuleClasses,
   UploadFormClasses,
-  ImageScalingClasses
+  ImageScalingClasses,
+  RANDOM_PHOTO_COUNT
 };
