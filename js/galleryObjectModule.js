@@ -1,5 +1,6 @@
-import { ThumbnailGalleryClasses as classes } from './constants.js';
+import { RANDOM_PHOTO_COUNT, ThumbnailGalleryClasses as classes } from './constants.js';
 import { fullSizePhoto } from './fullSizePhotoModule.js';
+import { getRandomElements } from './utils.js';
 
 const compareLikes = function (photoA, photoB) {
   return photoB.likes - photoA.likes;
@@ -57,6 +58,7 @@ const thumbnailsGallery = {
         this.fill(this._thumbnailsSource);
         break;
       case 'filter-random':
+        this.fill(getRandomElements(this._thumbnailsSource, RANDOM_PHOTO_COUNT));
         break;
       case 'filter-discussed':
         this.fill(this._thumbnailsSource.slice().sort(compareLikes));
