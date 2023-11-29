@@ -79,7 +79,6 @@ const thumbnailsGallery = {
     arrayPhoto.forEach((picture) => {
       documentFragment.appendChild(this._createNewThumbnail(picture));
     });
-    //this.thumbnailsContainer.innerHTML = this._containerHTML;
     this.clearPhotoList();
     this.thumbnailsContainer.appendChild(documentFragment);
   },
