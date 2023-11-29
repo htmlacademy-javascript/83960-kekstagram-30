@@ -37,6 +37,11 @@ const commentsList = {
     this.setNumberCommentsShown();
     this.numberCommentsShown = Math.min(this.numberCommentsShown, this.numberCommentsTotal - this.showFromNumber);
     this.listComments.innerHTML += documentFragment.innerHTML;
+    if (this.numberCommentsShown === 0) {
+      this.commentsLoaderButton.classList.add('hidden');
+    } else {
+      this.commentsLoaderButton.classList.remove('hidden');
+    }
   },
   setCommentsLoaderButton() {
     this.commentsLoaderButton = document.querySelector(`.${classes.COMMENTS_LOADER_BUTTON_CLASS}`);
@@ -51,8 +56,8 @@ const commentsList = {
     this.numberCommentsShown = Math.min(this.numberCommentsTotal, numberShown);
     this.showFromNumber = 0;
     this.listComments = classes.LIST_COMMENTS_CLASS;
-    this.showNextComments(true);
     this.setCommentsLoaderButton();
+    this.showNextComments(true);
   },
   release() {
     this.arrayComments = null;
