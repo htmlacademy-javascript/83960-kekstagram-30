@@ -29,7 +29,7 @@ const pristineFormValidator = {
   },
   _hashtagInputValidate(value) {
     if (value.length !== 0) {
-      const arrayTags = value.split(' ');
+      const arrayTags = value.trim().split(' ');
       if (!pristineFormValidator._isCountValid(arrayTags)) {
         pristineFormValidator._errorMessage = 'Количество хэш-тегов не должно превышать 5';
         return false;
@@ -53,7 +53,7 @@ const pristineFormValidator = {
     let result = true;
     let i = 0;
     while (result && i < arrayTags.length) {
-      result = regexp.test(arrayTags[i]);
+      result = regexp.test(arrayTags[i].trim());
       i++;
     }
     return result;
