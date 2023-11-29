@@ -5,6 +5,7 @@ const ThumbnailGalleryClasses = {
   PICTURE_IMAGE_CLASS: 'picture__img',
   PICTURE_LIKES_CLASS: 'picture__likes',
   PICTURE_COMMENTS_CLASS: 'picture__comments',
+  PICTURE_ELEMENT_CLASS: 'picture'
 };
 
 //Имена классов для инициализирующего модуля галереи миниатюр

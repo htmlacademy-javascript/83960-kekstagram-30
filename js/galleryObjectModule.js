@@ -79,9 +79,16 @@ const thumbnailsGallery = {
     arrayPhoto.forEach((picture) => {
       documentFragment.appendChild(this._createNewThumbnail(picture));
     });
-    this.thumbnailsContainer.innerHTML = this._containerHTML;
+    //this.thumbnailsContainer.innerHTML = this._containerHTML;
+    this.clearPhotoList();
     this.thumbnailsContainer.appendChild(documentFragment);
   },
+  clearPhotoList() {
+    const photoList = this.thumbnailsContainer.querySelectorAll(`.${classes.PICTURE_ELEMENT_CLASS}`);
+    for (const photo of photoList) {
+      photo.remove();
+    }
+  }
 };
 
 export { thumbnailsGallery };
