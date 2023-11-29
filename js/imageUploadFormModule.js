@@ -107,6 +107,7 @@ const imageEditingForm = {
   },
   hide() {
     imageUploadForm.reset();
+    imageUploadInput.value = '';
     scalingObject.reset();
     this._effectSelection.reset();
     this.container.classList.add('hidden');
