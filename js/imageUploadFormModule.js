@@ -107,6 +107,8 @@ const imageEditingForm = {
   },
   hide() {
     imageUploadForm.reset();
+    this.preview.style.filter = '';
+    this.preview.src = '';
     imageUploadInput.value = '';
     scalingObject.reset();
     this._effectSelection.reset();
