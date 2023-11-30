@@ -1,4 +1,4 @@
-import { commentsList } from './commentsObjectModule.js';
+import { commentsList } from './comments-object.js';
 import { FullSizePhotoModuleClasses as classes } from './constants.js';
 
 const fullSizePhoto = {

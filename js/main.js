@@ -1,3 +1,3 @@
-import './galleryWorkModule.js';
-import './imageUploadFormModule.js';
-import './filterPhotoModule.js';
+import './gallery-work.js';
+import './image-upload-form.js';
+import './filter-photo.js';
