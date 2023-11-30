@@ -1,5 +1,5 @@
 import { RANDOM_PHOTO_COUNT, ThumbnailGalleryClasses as classes } from './constants.js';
-import { fullSizePhoto } from './fullSizePhotoModule.js';
+import { fullSizePhoto } from './full-size-photo.js';
 import { getRandomElements } from './utils.js';
 
 const compareLikes = function (photoA, photoB) {

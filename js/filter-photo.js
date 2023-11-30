@@ -1,4 +1,4 @@
-import { thumbnailsGallery } from './galleryObjectModule.js';
+import { thumbnailsGallery } from './gallery-object.js';
 
 const filtersForm = document.querySelector('.img-filters__form');
 let activeButton = filtersForm.querySelector('.img-filters__button--active');

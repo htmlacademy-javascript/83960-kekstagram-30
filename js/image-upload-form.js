@@ -1,9 +1,9 @@
 import { UploadFormClasses as classes } from './constants.js';
 import { setBodyModalMode } from './utils.js';
-import { scalingObject } from './imageScalingModule.js';
-import { sendData } from './sendDataModule.js';
-import { effectSelectionObject } from './sliderObjectModule.js';
-import { pristineFormValidator } from './uploadFormValidation.js';
+import { scalingObject } from './image-scaling.js';
+import { sendData } from './send-data.js';
+import { effectSelectionObject } from './slider-object.js';
+import { pristineFormValidator } from './upload-form-validation.js';
 
 const imageUploadForm = document.querySelector(`.${classes.IMAGE_UPLOAD_FORM_CLASS}`);
 const imageUploadInput = imageUploadForm.querySelector(`.${classes.IMAGE_UPLOAD_INPUT_CLASS}`);
