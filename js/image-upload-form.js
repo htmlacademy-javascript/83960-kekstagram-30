@@ -12,6 +12,7 @@ const submitButton = imageUploadForm.querySelector(`.${classes.FORM_SUBMIT_BUTTO
 const imageEditingForm = {
   _validator: pristineFormValidator,
   _effectSelection: effectSelectionObject,
+  messagePosted: '',
   set container(formClassName) {
     this._container = imageUploadForm.querySelector(`.${formClassName}`);
   },
@@ -39,7 +40,7 @@ const imageEditingForm = {
   onDocumentKeyDown(evt) {
     if (evt.key === 'Escape') {
       if (imageEditingForm.messagePosted) {
-        imageEditingForm.closeMessage('error');
+        imageEditingForm.closeMessage(imageEditingForm.messagePosted);
       } else {
         if ((evt.target.className === 'text__description') || (evt.target.className === 'text__hashtags')) {
           evt.stopPropagation();
@@ -53,18 +54,15 @@ const imageEditingForm = {
   },
   successSend() {
     imageEditingForm.showMessage('success');
-    submitButton.disabled = false;
-    imageEditingForm.hide();
   },
   failSend() {
     imageEditingForm.showMessage('error');
-    submitButton.disabled = false;
   },
   showMessage(id) {
     const template = document.querySelector(`#${id}`).content;
     const message = template.cloneNode(true);
     document.body.append(message);
-    imageEditingForm.messagePosted = id === 'error';
+    imageEditingForm.messagePosted = id;
     const messageSection = document.querySelector(`.${id}`);
     messageSection.addEventListener('click', imageEditingForm.onSectionClick);
   },
@@ -72,7 +70,11 @@ const imageEditingForm = {
     const section = document.querySelector(`.${id}`);
     section.removeEventListener('click', imageEditingForm.onSectionClick);
     section.remove();
-    imageEditingForm.messagePosted = false;
+    submitButton.disabled = false;
+    if (id === 'success') {
+      imageEditingForm.hide();
+    }
+    imageEditingForm.messagePosted = '';
   },
   onSectionClick(evt) {
     if ((evt.target.className === 'success') || (evt.target.className === 'success__button')) {

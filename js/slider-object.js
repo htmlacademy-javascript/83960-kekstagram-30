@@ -54,6 +54,7 @@ const effectSelectionObject = {
   init(form) {
     this.listEffects = form.elements.namedItem('effect');
     this.listEffects.forEach((item) => this.setEventHandler(item));
+    this.currentEffect = 'none';
     this.initializeSlider();
   },
   initializeSlider() {
@@ -67,6 +68,7 @@ const effectSelectionObject = {
     this.listEffects.forEach((item) => this.unsetEventHandler(item));
     this.effectLevelSlider.slider.off();
     this.effectLevelSlider.slider.destroy();
+    this.currentEffect = 'none';
   },
   setEventHandler(item) {
     item.addEventListener('click', this.onListEffectsClick);
